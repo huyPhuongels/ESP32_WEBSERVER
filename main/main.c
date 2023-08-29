@@ -76,6 +76,8 @@ esp_err_t send_web_page(httpd_req_t *req)
     {
         sprintf(response_data, index_html, "OFF");
     }
+    response = httpd_resp_set_type(req, "text/html");
+
     response = httpd_resp_send(req, response_data, HTTPD_RESP_USE_STRLEN);
     return response;
 }
@@ -83,6 +85,7 @@ esp_err_t send_web_page(httpd_req_t *req)
 esp_err_t send_style_css(httpd_req_t *req)
 {
     int response;
+    response = httpd_resp_set_type(req, "text/css");
     response = httpd_resp_send(req, style_css, HTTPD_RESP_USE_STRLEN);
     return response;
 }
